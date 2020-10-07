@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        /*View.OnClickListener listener1 = (view) -> {
+      /*  View.OnClickListener listener1 = (view) -> {
             Button b1 = (Button) view;
             newNumber.append(b1.getText().toString());
         };*/
