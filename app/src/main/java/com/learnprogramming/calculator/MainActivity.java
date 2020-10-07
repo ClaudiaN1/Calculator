@@ -1,12 +1,12 @@
 package com.learnprogramming.calculator;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 newNumber.append(b.getText().toString());
             }
         };
+
         button0.setOnClickListener(listener);
         button1.setOnClickListener(listener);
         button2.setOnClickListener(listener);
@@ -64,5 +65,30 @@ public class MainActivity extends AppCompatActivity {
         button8.setOnClickListener(listener);
         button9.setOnClickListener(listener);
         buttonDot.setOnClickListener(listener);
+
+        View.OnClickListener opListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button b = (Button) v;
+                String op = b.getText().toString();
+                String value = newNumber.getText().toString();
+                if (value.length() != 0) {
+                    performOperation(value, op);
+
+                }
+                pendingOperation = op;
+                displayOperation.setText(pendingOperation);
+            }
+        };
+
+        buttonEquals.setOnClickListener(opListener);
+        buttonDivide.setOnClickListener(opListener);
+        buttonMultiply.setOnClickListener(opListener);
+        buttonMinus.setOnClickListener(opListener);
+        buttonPlus.setOnClickListener(opListener);
+    }
+
+    private void performOperation(String value, String operation) {
+        displayOperation.setText(operation);
     }
 }
